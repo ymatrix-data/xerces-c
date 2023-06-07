@@ -36,6 +36,8 @@
 #include <xercesc/util/XMLUniDefs.hpp>
 #include <xercesc/util/PlatformUtils.hpp>
 #include <xercesc/util/XMLInitializer.hpp>
+#include <xercesc/util/XMemory.hpp>
+
 #include <stdio.h>
 #include <assert.h>
 
@@ -64,6 +66,7 @@ static DOMNodeListImpl *gEmptyNodeList = 0; // Singleton empty node list.
 
 void XMLInitializer::initializeDOMNodeListImpl()
 {
+	// create with global memory manager
     gEmptyNodeList = new DOMNodeListImpl(0);
 }
 

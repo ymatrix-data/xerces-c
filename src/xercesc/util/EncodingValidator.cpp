@@ -32,6 +32,7 @@ EncodingValidator* EncodingValidator::fInstance = 0;
 
 void XMLInitializer::initializeEncodingValidator()
 {
+	// create with global memory manager
     EncodingValidator::fInstance = new EncodingValidator();
 }
 

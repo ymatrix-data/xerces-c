@@ -23,6 +23,7 @@
 #define XERCESC_INCLUDE_GUARD_DOMNODELIST_HPP
 
 #include <xercesc/util/XercesDefs.hpp>
+#include <xercesc/util/XMemory.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
@@ -42,7 +43,8 @@ class DOMNode;
  * reflected in any DOMNodeLists that may have been created for that tree.
  */
 
-class  CDOM_EXPORT DOMNodeList {
+class  CDOM_EXPORT DOMNodeList : public XMemory 
+{
 protected:
     // -----------------------------------------------------------------------
     //  Hidden constructors

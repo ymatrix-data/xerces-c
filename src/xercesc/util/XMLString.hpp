@@ -1262,7 +1262,8 @@ public:
     static XMLCh* makeUName
     (
         const   XMLCh* const    pszURI
-        , const XMLCh* const    pszName
+        , const XMLCh* const    pszName,
+        MemoryManager* const  manager = XMLPlatformUtils::fgMemoryManager
     );
 
     /**

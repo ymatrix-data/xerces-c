@@ -82,12 +82,12 @@ public:
     // -----------------------------------------------------------------------
     void setKey(const XMLCh* const newKey);
     void setValue(const XMLCh* const newValue);
-    void setKey
+    inline void setKey
     (
         const   XMLCh* const newKey
         , const XMLSize_t    newKeyLength
     );
-    void setValue
+    inline void setValue
     (
         const   XMLCh* const newValue
         , const XMLSize_t    newValueLength

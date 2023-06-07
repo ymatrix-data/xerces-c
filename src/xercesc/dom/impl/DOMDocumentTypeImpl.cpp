@@ -208,11 +208,11 @@ DOMNode *DOMDocumentTypeImpl::cloneNode(bool deep) const
     DOMNode* newNode = 0;
     DOMDocument* doc = castToNodeImpl(this)->getOwnerDocument();
     if (doc != 0)
-        newNode = new (doc, DOMMemoryManager::DOCUMENT_TYPE_OBJECT) DOMDocumentTypeImpl(*this, false, deep);
+        newNode = ::new (doc, DOMMemoryManager::DOCUMENT_TYPE_OBJECT) DOMDocumentTypeImpl(*this, false, deep);
     else
     {
         XMLMutexLock lock(sDocumentMutex);
-        newNode = new (sDocument, DOMMemoryManager::DOCUMENT_TYPE_OBJECT) DOMDocumentTypeImpl(*this, false, deep);
+        newNode = ::new (sDocument, DOMMemoryManager::DOCUMENT_TYPE_OBJECT) DOMDocumentTypeImpl(*this, false, deep);
     }
 
     fNode.callUserDataHandlers(DOMUserDataHandler::NODE_CLONED, this, newNode);

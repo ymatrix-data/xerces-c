@@ -34,7 +34,8 @@ XERCES_CPP_NAMESPACE_BEGIN
   * encoding
   */
 
-class XMLUTIL_EXPORT EncodingValidator {
+class XMLUTIL_EXPORT EncodingValidator : public XMemory
+{
 
 public:
     // -----------------------------------------------------------------------

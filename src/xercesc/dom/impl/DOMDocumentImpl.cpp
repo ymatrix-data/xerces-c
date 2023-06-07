@@ -312,7 +312,8 @@ DOMDocumentType *DOMDocumentImpl::createDocumentType(const XMLCh *nam)
         throw DOMException(
         DOMException::INVALID_CHARACTER_ERR, 0, getMemoryManager());
 
-    return new (this, DOMMemoryManager::DOCUMENT_TYPE_OBJECT) DOMDocumentTypeImpl(this, nam, false);
+	// avoid confusion with the XMemory member new operator
+    return ::new (this, DOMMemoryManager::DOCUMENT_TYPE_OBJECT) DOMDocumentTypeImpl(this, nam, false);
 }
 
 
@@ -326,7 +327,8 @@ DOMDocumentType *
         throw DOMException(
         DOMException::INVALID_CHARACTER_ERR, 0, getMemoryManager());
 
-    return new (this, DOMMemoryManager::DOCUMENT_TYPE_OBJECT) DOMDocumentTypeImpl(this, qualifiedName, publicId, systemId, false);
+	// avoid confusion with the XMemory member new operator
+    return ::new (this, DOMMemoryManager::DOCUMENT_TYPE_OBJECT) DOMDocumentTypeImpl(this, qualifiedName, publicId, systemId, false);
 }
 
 
@@ -916,7 +918,7 @@ DOMNodeList *DOMDocumentImpl::getDeepNodeList(const DOMNode *rootNode, const XML
 
     DOMDeepNodeListImpl* retList = fNodeListPool->getByKey(rootNode, tagName, 0);
     if (!retList) {
-        XMLSize_t id = fNodeListPool->put((void*) rootNode, (XMLCh*) tagName, 0, new (this) DOMDeepNodeListImpl(rootNode, tagName));
+        XMLSize_t id = fNodeListPool->put((void*) rootNode, (XMLCh*) tagName, 0, ::new (this) DOMDeepNodeListImpl(rootNode, tagName));
         retList = fNodeListPool->getById(id);
     }
 
@@ -935,7 +937,7 @@ DOMNodeList *DOMDocumentImpl::getDeepNodeList(const DOMNode *rootNode,     //DOM
     DOMDeepNodeListImpl* retList = fNodeListPool->getByKey(rootNode, localName, namespaceURI);
     if (!retList) {
         // the pool will adopt the DOMDeepNodeListImpl
-        XMLSize_t id = fNodeListPool->put((void*) rootNode, (XMLCh*) localName, (XMLCh*) namespaceURI, new (this) DOMDeepNodeListImpl(rootNode, namespaceURI, localName));
+        XMLSize_t id = fNodeListPool->put((void*) rootNode, (XMLCh*) localName, (XMLCh*) namespaceURI, ::new (this) DOMDeepNodeListImpl(rootNode, namespaceURI, localName));
         retList = fNodeListPool->getById(id);
     }
 

@@ -1364,7 +1364,7 @@ int XMLString::lastIndexOf( const   XMLCh* const    toSearch
 
 
 XMLCh*
-XMLString::makeUName(const XMLCh* const pszURI, const XMLCh* const pszName)
+XMLString::makeUName(const XMLCh* const pszURI, const XMLCh* const pszName, MemoryManager* const  manager)
 {
     //
     //  If there is a URI, then format out the full name in the {uri}name
@@ -1374,8 +1374,8 @@ XMLString::makeUName(const XMLCh* const pszURI, const XMLCh* const pszName)
     const XMLSize_t uriLen = stringLen(pszURI);
     if (uriLen)
     {
-        pszRet = new XMLCh[uriLen + stringLen(pszName) + 3];
-
+        pszRet = (XMLCh*) manager->allocate((uriLen + stringLen(pszName) + 3) * sizeof(XMLCh)); // new XMLCh[uriLen + stringLen(pszName) + 3]
+        
         XMLCh szTmp[2];
         szTmp[1] = 0;
 

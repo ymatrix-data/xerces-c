@@ -44,7 +44,7 @@ XERCES_CPP_NAMESPACE_BEGIN
 
 class DOMNamedNodeMapImpl;
 
-class CDOM_EXPORT DOMDocumentTypeImpl: public DOMDocumentType {
+class CDOM_EXPORT DOMDocumentTypeImpl: public DOMDocumentType, public XMemory {
 protected:
     DOMNodeImpl          fNode;
     DOMParentNode        fParent;

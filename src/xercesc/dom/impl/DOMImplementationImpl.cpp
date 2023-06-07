@@ -152,7 +152,7 @@ DOMDocumentType *DOMImplementationImpl::createDocumentType(const XMLCh *qualifie
     if(!XMLChar1_0::isValidName(qualifiedName))
         throw DOMException(DOMException::INVALID_CHARACTER_ERR, 0);
 
-    //to do: do we need to create with user's memorymanager???
+    // create with global memory manager
     DOMDocumentTypeImpl* docType = new DOMDocumentTypeImpl(0, qualifiedName, publicId, systemId, true);
     return docType;
 }
@@ -281,6 +281,7 @@ DOMImplementation* DOMImplementationImpl::getDOMImplementation(const XMLCh* feat
 
 DOMImplementationList* DOMImplementationImpl::getDOMImplementationList(const XMLCh* features) const
 {
+	// create with global memory manager
     DOMImplementationListImpl* list = new DOMImplementationListImpl;
     DOMImplementation* myImpl=getDOMImplementation(features);
     if(myImpl)

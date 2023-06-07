@@ -37,7 +37,7 @@ class DOMImplementation;
  * an integral index, starting from 0.
  */
 
-class  CDOM_EXPORT DOMImplementationList {
+class  CDOM_EXPORT DOMImplementationList : public XMemory {
 protected:
     // -----------------------------------------------------------------------
     //  Hidden constructors
